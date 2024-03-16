@@ -14,8 +14,6 @@ function Auth({ type }: { type: "/" | "Sign In" }) {
   const Navigate = useNavigate();
   async function SendRequest() {
     try {
-      console.log(Backend_url);
-
       const response = await axios.post(
         `${Backend_url}/api/v1/user/${type === "/" ? "signup" : "signin"}`,
         postIput
