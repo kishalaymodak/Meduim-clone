@@ -6,9 +6,9 @@ function Quorte() {
           "Welcome to Medium, where ideas ignite and voices unite. Join the
           conversation. Welcome to Medium."
         </div>
-        <div className=" text-2xl font-bold mt-2">Jules Winnfield</div>
+        <div className=" text-2xl font-bold mt-2">Kishalay Modak</div>
         <div className=" text-lg font-semibold text-slate-500">
-          CEO,Kishalay Modak
+          The creator of this website
         </div>
       </div>
     </div>
