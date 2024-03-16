@@ -5,7 +5,7 @@ function SignUp() {
   return (
     <div className="flex">
       <div className="h-screen w-full">
-        <Auth type="Sign Up" />
+        <Auth type="/" />
       </div>
       <div className=" hidden md:contents">
         <Quorte />

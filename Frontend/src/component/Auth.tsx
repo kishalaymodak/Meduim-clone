@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SignUpInput } from "@kishalay/medum-common";
 import axios from "axios";
 import { Backend_url } from "../config";
-function Auth({ type }: { type: "Sign Up" | "Sign In" }) {
+function Auth({ type }: { type: "/" | "Sign In" }) {
   const [postIput, setPostInput] = useState<SignUpInput>({
     name: "",
     email: "",
@@ -14,10 +14,10 @@ function Auth({ type }: { type: "Sign Up" | "Sign In" }) {
   const Navigate = useNavigate();
   async function SendRequest() {
     try {
+      console.log(Backend_url);
+
       const response = await axios.post(
-        `${Backend_url}/api/v1/user/${
-          type === "Sign Up" ? "signup" : "signin"
-        }`,
+        `${Backend_url}/api/v1/user/${type === "/" ? "signup" : "signin"}`,
         postIput
       );
       const jwt = response.data.jwt;
@@ -38,18 +38,18 @@ function Auth({ type }: { type: "Sign Up" | "Sign In" }) {
             <div className=" flex items-center flex-col">
               <div className=" text-5xl font-bold"> Create an Account</div>
               <div className=" text-2xl font-semibold text-slate-600">
-                {type === "Sign Up"
+                {type === "/"
                   ? "Already have an account?"
                   : "Don't have an account?"}
                 <span className=" underline">
-                  <Link to={type === "Sign Up" ? "/signin" : "/signup"}>
-                    {type === "Sign Up" ? "Login" : "Sign Up"}
+                  <Link to={type === "/" ? "/signin" : "/"}>
+                    {type === "/" ? "Login" : "Sign Up"}
                   </Link>
                 </span>
               </div>
             </div>
             <div className=" flex flex-col pt-4">
-              {type === "Sign Up" ? (
+              {type === "/" ? (
                 <Inputbox
                   lable="Name"
                   placeholder="Kishalay"
@@ -87,7 +87,7 @@ function Auth({ type }: { type: "Sign Up" | "Sign In" }) {
                 onClick={SendRequest}
                 className="mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
               >
-                {type === "Sign Up" ? "Sign Up" : "Sign In"}
+                {type === "/" ? "Sign Up" : "Sign In"}
               </button>
             </div>
           </div>
